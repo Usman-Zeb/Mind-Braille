@@ -27,7 +27,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_background"
-        android:drawableRight="@drawable/ic_email"
+        android:drawableEnd="@drawable/ic_email"
         android:hint="Recipient's address"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
