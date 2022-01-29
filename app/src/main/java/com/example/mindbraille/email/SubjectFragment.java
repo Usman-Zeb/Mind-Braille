@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import com.microsoft.graph.requests.extensions.IContactCollectionPage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class SubjectFragment extends Fragment {
 
@@ -120,5 +122,21 @@ public class SubjectFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View kb = layoutInflater.inflate(R.layout.mindbraillekb,null);
+
+
+        RelativeLayout smsrl = Objects.requireNonNull(getActivity()).findViewById(R.id.address_frament_relative_layout);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        //params.addRule(RelativeLayout.BELOW, R.id.new_sms_final_back_btn);
+        kb.setLayoutParams(params);
+        smsrl.addView(kb);
     }
 }

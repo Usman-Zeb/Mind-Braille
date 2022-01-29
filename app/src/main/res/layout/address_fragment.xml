@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+
+    android:id="@+id/address_frament_relative_layout"
     android:background="@drawable/foreground_gradient"
     >
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/buttontocontactlistemail"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_contact"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:layout_below="@+id/buttontocontactlistemail"
         android:id="@+id/recipientmailfield"
+        android:layout_centerHorizontal="true"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_background"
@@ -23,39 +37,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.246" />
 
-    <Button
-        android:id="@+id/buttontocontactlistemail"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/ic_contact"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+
 
     <Button
+        android:layout_below="@+id/recipientmailfield"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="20dp"
         android:id="@+id/buttontoemailbody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:text="Next"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipientmailfield"
-        app:layout_constraintVertical_bias="0.041" />
+        android:textSize="20sp"
+         />
 
     <com.synnapps.carouselview.CarouselView
+        android:layout_below="@+id/buttontoemailbody"
+        android:layout_marginTop="20dp"
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:fillColor="#FFFFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
@@ -64,4 +67,4 @@
         tools:layout_editor_absoluteX="16dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

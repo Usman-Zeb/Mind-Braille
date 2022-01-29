@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="14sp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Sender: "
+        android:id="@+id/recent_sms_item_list_sender"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:layout_margin="5dp"
+
+        android:layout_width="match_parent"
+        android:textSize="14sp"
+        android:layout_height="wrap_content"
+        android:text="Message:\n\n"
+        android:id="@+id/recent_sms_item_list_message"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#c0c0c0"/>
+
+</LinearLayout>

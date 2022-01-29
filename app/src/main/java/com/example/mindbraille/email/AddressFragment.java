@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -39,6 +42,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class AddressFragment extends Fragment {
 
@@ -137,9 +141,23 @@ public class AddressFragment extends Fragment {
             }
         });
 
+
         return v;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View kb = layoutInflater.inflate(R.layout.mindbraillekb,null);
 
 
+        RelativeLayout smsrl = Objects.requireNonNull(getActivity()).findViewById(R.id.address_frament_relative_layout);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        //params.addRule(RelativeLayout.BELOW, R.id.new_sms_final_back_btn);
+        kb.setLayoutParams(params);
+        smsrl.addView(kb);
+    }
 }

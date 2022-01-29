@@ -16,7 +16,7 @@
         android:layout_centerInParent="true"
 
 
-        android:text="[Number]"
+        android:text="Number"
         android:textColor="@color/black"
         android:textSize="30sp"
 
@@ -41,36 +41,38 @@
         android:id="@+id/btslayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/numberdialed"
+        android:layout_above="@+id/gridLayout"
         android:orientation="horizontal">
 
         <ImageButton
+            android:contentDescription="Back Button"
             android:enabled="false"
             android:id="@+id/btnback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tint="@color/white"
             android:backgroundTint="@color/mygrey"
             android:src="@drawable/ic_home"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            app:tint="@color/white" />
 
         <ImageButton
 
             android:enabled="false"
             android:id="@+id/btnph"
-            android:tint="@color/white"
             android:src="@drawable/ic_baseline_call_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/mygrey"
             android:text="PB"
-            android:textSize="30sp" />
+            android:contentDescription="Phonebook"
+            android:textSize="30sp"
+            app:tint="@color/white" />
         <ImageButton
+            android:contentDescription="Delete Button"
             android:enabled="false"
             android:id="@+id/deletebtn"
-            android:tint="@color/white"
             android:src="@drawable/ic_delete"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -80,7 +82,7 @@
             android:text="Del"
             android:textSize="30sp"
 
-            />
+            app:tint="@color/white" />
 
     </LinearLayout>
 
@@ -93,7 +95,7 @@
         android:layout_height="500dp"
         android:columnCount="3"
         android:rowCount="6"
-        android:layout_below="@+id/btslayout">
+        android:layout_alignParentBottom="true">
 
 
         <Button
@@ -218,7 +220,7 @@
             android:layout_gravity="fill"
             android:layout_margin="5sp"
             android:enabled="false"
-            android:text="0\n(+)"
+            android:text="0"
             android:textSize="30sp" />
 
         <Button

@@ -9,7 +9,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[Enter Number]"
+        android:text="Number"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
@@ -38,27 +39,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tint="@color/white"
             android:backgroundTint="@color/mygrey"
             android:src="@drawable/ic_home"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            app:tint="@color/white" />
 
         <ImageButton
 
             android:enabled="false"
             android:id="@+id/new_sms_num_phonebook"
-            android:tint="@color/white"
             android:src="@drawable/ic_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/mygrey"
             android:text="PB"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:tint="@color/white" />
         <ImageButton
             android:enabled="false"
             android:id="@+id/new_sms_num_delete"
-            android:tint="@color/white"
             android:src="@drawable/ic_delete"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -67,7 +67,7 @@
             android:backgroundTint="@color/mygrey"
             android:text="Del"
             android:textSize="30sp"
-            />
+            app:tint="@color/white" />
 
     </LinearLayout>
 

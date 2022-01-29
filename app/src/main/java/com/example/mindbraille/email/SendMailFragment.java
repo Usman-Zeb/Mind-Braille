@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -277,4 +279,19 @@ public class SendMailFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View kb = layoutInflater.inflate(R.layout.mindbraillekb,null);
+
+
+        RelativeLayout smsrl = Objects.requireNonNull(getActivity()).findViewById(R.id.emailbody_fragment_relative_layout);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        //params.addRule(RelativeLayout.BELOW, R.id.new_sms_final_back_btn);
+        kb.setLayoutParams(params);
+        smsrl.addView(kb);
+    }
 }
