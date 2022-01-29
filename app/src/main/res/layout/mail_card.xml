@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        >
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            android:id="@+id/contact_pic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp" />
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subject"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="Hello!"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/sendername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/body"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="placeholder@microsoft.com"
+            android:textSize="11dp" />
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sendermail"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="24/1/22"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/sendermail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sendername"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="Hanzla Javaid"
+            android:textSize="11dp" />
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:layout_below="@id/body"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/subject"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:textStyle="bold"
+            android:text="Subject"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

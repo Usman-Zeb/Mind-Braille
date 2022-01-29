@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:drawable="@color/colorPrimary" android:state_enabled="true" />
+        <item android:drawable="@color/colorButtonNotInFocus" android:state_enabled="false" />
+        <!-- default state-->
+        <item android:drawable="@color/colorPrimary" />
+    </selector>
+    <corners android:radius="3dp"/>
+</shape>

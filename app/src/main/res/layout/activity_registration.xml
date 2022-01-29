@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/foreground_gradient"
+        android:elevation="100dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.80"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
+
+
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age_field"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_background"
+            android:drawableRight="@drawable/ic_age"
+            android:hint="Age"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+             />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sos_email_field"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_background"
+            android:drawableRight="@drawable/ic_email"
+            android:hint="Gaurdian's Email"
+            android:padding="15dp"
+            android:layout_margin="15dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sos_contact_field"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_background"
+            android:drawableRight="@drawable/ic_contact"
+            android:hint="Gaurdian's Contact"
+            android:padding="15dp"
+            android:layout_margin="15dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/address_field"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_background"
+            android:drawableRight="@drawable/ic_home"
+            android:hint="Home Address"
+            android:padding="15dp"
+            android:layout_margin="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBLACK"
+            android:text="Are you able to speak?"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/speak_radioButton"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/yes_speak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+               />
+            <RadioButton android:id="@+id/yes_speak2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To some extent"
+                />
+            <RadioButton android:id="@+id/no_speak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you color blinded?"
+            android:textColor="@color/colorBLACK"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blind_radioButton"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/yes_blind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                />
+            <RadioButton android:id="@+id/no_blind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                />
+        </RadioGroup>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveInfo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorGreen"
+                android:text="Save"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                app:cornerRadius="0dp"
+                android:layout_margin="15dp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/beginapp"
+                android:visibility="gone"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:text="Start"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                app:cornerRadius="0dp"
+                android:layout_margin="15dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

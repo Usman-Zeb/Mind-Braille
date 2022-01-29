@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".email.MailDetails"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:visibility="visible"
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
+        android:background="@drawable/input_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="640dp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/sendername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Hanzla Javaid"
+        android:textSize="16dp"
+         />
+
+    <TextView
+        android:id="@+id/sendermail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="placeholder@microsoft.com"
+        android:textSize="16dp"
+
+         />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="24/1/22"
+
+        android:textAlignment="center"
+        android:textSize="11dp"
+         />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goback"
+            app:icon="@drawable/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_margin="15dp"
+            />
+        <com.google.android.material.button.MaterialButton
+        app:icon="@drawable/ic_reply"
+            android:enabled="true"
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:id="@+id/reply"
+            android:text="Reply"
+
+        />
+
+    </LinearLayout>
+</LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

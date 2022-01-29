@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".call.Call">
+
+
+    <TextView
+        android:id="@+id/number"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+
+
+        android:text="[Number]"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+
+        android:textStyle="bold" />
+
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/numberdialed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_below="@id/number"
+        android:layout_centerInParent="true"
+
+        />
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:paddingHorizontal="10dp"
+        android:id="@+id/btslayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberdialed"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:enabled="false"
+            android:id="@+id/btnback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:tint="@color/white"
+            android:backgroundTint="@color/mygrey"
+            android:src="@drawable/ic_home"
+            android:textSize="30sp"/>
+
+        <ImageButton
+
+            android:enabled="false"
+            android:id="@+id/btnph"
+            android:tint="@color/white"
+            android:src="@drawable/ic_baseline_call_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/mygrey"
+            android:text="PB"
+            android:textSize="30sp" />
+        <ImageButton
+            android:enabled="false"
+            android:id="@+id/deletebtn"
+            android:tint="@color/white"
+            android:src="@drawable/ic_delete"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/mygrey"
+            android:text="Del"
+            android:textSize="30sp"
+
+            />
+
+    </LinearLayout>
+
+
+    <GridLayout
+
+        android:paddingHorizontal="10dp"
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:columnCount="3"
+        android:rowCount="6"
+        android:layout_below="@+id/btslayout">
+
+
+        <Button
+            android:id="@+id/button1"
+            android:enabled="false"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+
+
+            android:onClick="dialdigit"
+
+
+            android:text="1"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_rowWeight="1"
+            android:enabled="false"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:onClick="dialdigit"
+            android:text="2"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:enabled="false"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:onClick="dialdigit"
+            android:text="3"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:enabled="false"
+            android:layout_margin="5sp"
+            android:onClick="dialdigit"
+            android:text="4"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_rowWeight="1"
+            android:enabled="false"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:onClick="dialdigit"
+            android:text="5"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:onClick="dialdigit"
+            android:text="6"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:onClick="dialdigit"
+            android:text="7"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:onClick="dialdigit"
+            android:text="8"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:onClick="dialdigit"
+            android:text="9"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonstar"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:onClick="dialdigit"
+            android:enabled="false"
+            android:text="*"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:text="0\n(+)"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonhash"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:onClick="dialdigit"
+            android:text="#"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttoncall"
+            android:backgroundTint="@color/mygrey"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5sp"
+            android:enabled="false"
+
+            android:text="Call"
+            android:textSize="30sp" />
+
+
+    </GridLayout>
+
+
+</RelativeLayout>

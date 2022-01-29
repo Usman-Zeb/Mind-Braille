@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/sms_rl"
+    tools:context=".sms.SMS">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:text="SMS"
+        android:id="@+id/sms_menu_txt"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/recent_sms_btn"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="Recent SMS"
+        android:onClick="selectoption"
+        android:background="#000"
+        android:enabled="false"
+        android:layout_above="@+id/new_sms_btn"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/new_sms_btn"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="New SMS"
+        android:onClick="selectoption"
+        android:background="#000"
+        android:enabled="false"
+        android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:enabled="false"
+        android:layout_below="@id/new_sms_btn"
+        android:id="@+id/sms_main_back_btn"
+        android:background="#000"
+        android:onClick="selectoption"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textSize="20sp"/>
+
+
+
+
+
+</RelativeLayout>

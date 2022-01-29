@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        >
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            android:id="@+id/contact_pic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="Description"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="Source"
+            android:textSize="11dp" />
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/source"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="24/1/22"
+            android:textSize="11dp" />
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:layout_below="@id/title"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/newsphoto"
+            android:layout_alignTop="@+id/newsphoto"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="19dp"
+            android:layout_toEndOf="@+id/contact_pic"
+            android:text="Title"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/newsphoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/contact_pic">
+        </ImageView>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
