@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -134,6 +135,8 @@ public class SendMailFragment extends Fragment {
                 }
             };
             requestQueue.add(stringRequest);
+            Toast.makeText(getContext(),"Mail sent successfully",Toast.LENGTH_LONG).show();
+            getActivity().finish();
         }else{
             StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://graph.microsoft.com/v1.0/me/messages/"+EmailModel.id+"/reply",
                     new com.android.volley.Response.Listener<String>() {
@@ -169,6 +172,8 @@ public class SendMailFragment extends Fragment {
                 }
             };
             requestQueue.add(stringRequest);
+            Toast.makeText(getContext(),"Mail sent successfully",Toast.LENGTH_LONG).show();
+            getActivity().finish();
         }
     }
 

@@ -66,5 +66,11 @@ public class MailDetails extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment).commit();
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               finish();
+            }
+        });
     }
 }

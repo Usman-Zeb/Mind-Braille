@@ -37,6 +37,7 @@ import com.microsoft.identity.client.ISingleAccountPublicClientApplication;
 import com.microsoft.identity.client.PublicClientApplication;
 import com.microsoft.identity.client.SilentAuthenticationCallback;
 import com.microsoft.identity.client.exception.MsalException;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 
@@ -166,7 +167,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 new com.android.volley.Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Picasso.get().load("https://i.imgur.com/NMtRC7Y_d.webp?maxwidth=760&fidelity=grand").into(i);
                     }
 
                 }

@@ -85,18 +85,39 @@ public class CCFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                List<String> addresses = Arrays.asList(r_address.getText().toString().substring(1).split(";"));
-                EmailModel.ccs = addresses;
-
                 Bundle bundle = new Bundle();
                 bundle.putString("r_address",r_address.getText().toString());
                 bundle.putSerializable("userauthInfo",userauthInfo);
-                SendMailFragment fragment = new SendMailFragment();
-                fragment.setArguments(bundle);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.addToBackStack(AddressFragment.class.getName());
-                ft.add(R.id.frag_cont,fragment,"TAG");
-                ft.commit();
+
+                if(r_address.getText().toString().length()>0) {
+                    char first = r_address.getText().toString().charAt(0);
+                    List<String> addresses = Arrays.asList(r_address.getText().toString().substring(1).split(";"));
+                    if (addresses.size() == 1) {
+                        List<String> ads = new ArrayList<String>();
+                        if (first != ';') {
+                            ads.add(r_address.getText().toString());
+                            EmailModel.ccs = ads;
+                        }
+                        if (first == ';') {
+                            EmailModel.ccs = addresses;
+                        }
+                    } else {
+                        EmailModel.ccs = addresses;
+                    }
+                    Log.d("dee", EmailModel.recipients.toString());
+                }
+                else{
+                    List<String> ads = new ArrayList<>();
+                    ads.add("");
+                    EmailModel.ccs = ads;
+                }
+                    SendMailFragment fragment = new SendMailFragment();
+                    fragment.setArguments(bundle);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.addToBackStack(AddressFragment.class.getName());
+                    ft.add(R.id.frag_cont, fragment, "TAG");
+                    ft.commit();
+
             }
         });
 

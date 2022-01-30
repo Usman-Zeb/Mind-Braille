@@ -40,6 +40,8 @@ public class Call extends AppCompatActivity {
     final Handler handler = new Handler();
     Thread thread;
 
+    boolean rowwise=true;
+
     final Handler col_handler = new Handler();
     Thread col_thread;
     boolean col_running=true;
@@ -199,6 +201,7 @@ public class Call extends AppCompatActivity {
 
         public void run() {
 
+
             if(col_selector> buttons[row_selector].length-1)
             {
                 col_selector=0;
@@ -245,7 +248,7 @@ public class Call extends AppCompatActivity {
                 temp.setEnabled(true);
             }
 
-            if(((GlobalClass) getApplication()).getBlinked() && (((GlobalClass) getApplication()).getBlinkValue()>50))
+            if(((GlobalClass) getApplication()).getBlinked() && (((GlobalClass) getApplication()).getBlinkValue()>50) || rowwise==true)
             {
                 if(row_selector==0)
                 {
@@ -333,6 +336,7 @@ public class Call extends AppCompatActivity {
                     }
                 }
                 ((GlobalClass) getApplication()).setBlinked(false);
+                rowwise=true;
 
                 col_selector=0;
 
@@ -502,45 +506,35 @@ public class Call extends AppCompatActivity {
     public void dialdigit(View view)
     {
 
-        switch(view.getId())
+        if(rowwise)
         {
-            case R.id.button0:
-                textView.append("0");
-                break;
-            case R.id.button1:
-                textView.append("1");
-                break;
-            case R.id.button2:
-                textView.append("2");
-                break;
-            case R.id.button3:
-                textView.append("3");
-                break;
-            case R.id.button4:
-                textView.append("4");
-                break;
-            case R.id.button5:
-                textView.append("5");
-                break;
-            case R.id.button6:
-                textView.append("6");
-                break;
-            case R.id.button7:
-                textView.append("7");
-                break;
-            case R.id.button8:
-                textView.append("8");
-                break;
-            case R.id.button9:
-                textView.append("9");
-                break;
-            case R.id.buttonhash:
-                textView.append("#");
-                break;
-            case R.id.buttonstar:
-                textView.append("*");
-                break;
+            rowwise=false;
+            col_selector=0;
+            row_selector--;
+            col_running=true;
+            col_thread = new Thread(new Runnable() {
+                public void run() {
 
+                    while (col_running) {
+                        try {
+                            Thread.sleep((long) (1000 - (((GlobalClass) getApplication()).getConcentrationValue())));
+                            col_handler.post(colRunner);
+                        }
+                        catch (InterruptedException e){
+                            col_running=false;
+                        }
+
+                    }
+                }
+            });
+
+            col_thread.start();
+
+            thread.interrupt();
+        }
+        else
+        {
+            rowwise=true;
         }
 
     }

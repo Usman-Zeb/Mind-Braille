@@ -19,6 +19,7 @@ import static java.lang.Thread.sleep;
 
 public class New_SMS_Number extends AppCompatActivity {
     public TextView textView;
+    boolean rowwise=true;
     final Handler handler = new Handler();
     Thread thread;
     int selector =0;
@@ -52,52 +53,43 @@ public class New_SMS_Number extends AppCompatActivity {
     {
         switch(view.getId())
         {
-            case R.id.sms_button0:
-                textView.append("0");
-                break;
-            case R.id.sms_button1:
-                textView.append("1");
-                break;
-            case R.id.sms_button2:
-                textView.append("2");
-                break;
-            case R.id.sms_button3:
-                textView.append("3");
-                break;
-            case R.id.sms_button4:
-                textView.append("4");
-                break;
-            case R.id.sms_button5:
-                textView.append("5");
-                break;
-            case R.id.sms_button6:
-                textView.append("6");
-                break;
-            case R.id.sms_button7:
-                textView.append("7");
-                break;
-            case R.id.sms_button8:
-                textView.append("8");
-                break;
-            case R.id.sms_button9:
-                textView.append("9");
-                break;
-            case R.id.sms_buttonhash:
-                textView.append("#");
-                break;
-            case R.id.sms_buttonstar:
-                textView.append("*");
-                break;
-            case R.id.new_sms_num_phonebook:
-                phonebook pb = new phonebook();
-                pb.show(getSupportFragmentManager(),"pb");
-                break;
             case R.id.sms_buttonOk:
                 Intent intent = new Intent(getApplicationContext(), New_SMS_Text.class);
                 intent.putExtra("Number", textView.getText().toString());
                 startActivity(intent);
                 break;
 
+        }
+
+        if(rowwise)
+        {
+            rowwise=false;
+            col_selector=0;
+            row_selector--;
+            col_running=true;
+            col_thread = new Thread(new Runnable() {
+                public void run() {
+
+                    while (col_running) {
+                        try {
+                            Thread.sleep((long) (1000 - (((GlobalClass) getApplication()).getConcentrationValue())));
+                            col_handler.post(colRunner);
+                        }
+                        catch (InterruptedException e){
+                            col_running=false;
+                        }
+
+                    }
+                }
+            });
+
+            col_thread.start();
+
+            thread.interrupt();
+        }
+        else
+        {
+            rowwise=true;
         }
     }
 
@@ -188,7 +180,7 @@ public class New_SMS_Number extends AppCompatActivity {
                 temp.setEnabled(true);
             }
 
-            if(((GlobalClass) getApplication()).getBlinked() && (((GlobalClass) getApplication()).getBlinkValue()>50))
+            if(((GlobalClass) getApplication()).getBlinked() && (((GlobalClass) getApplication()).getBlinkValue()>50) || rowwise)
             {
                 if(row_selector==0)
                 {

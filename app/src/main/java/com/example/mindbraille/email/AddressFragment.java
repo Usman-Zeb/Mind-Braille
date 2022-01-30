@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -104,19 +105,36 @@ public class AddressFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                List<String> addresses = Arrays.asList(r_address.getText().toString().substring(1).split(";"));
-                EmailModel.recipients = addresses;
+
 
                 Bundle bundle = new Bundle();
                 bundle.putString("r_address",r_address.getText().toString());
                 bundle.putSerializable("userauthInfo",userauthInfo);
-                if(!r_address.getText().toString().equals("")){
-                CCFragment fragment = new CCFragment();
+                if(r_address.getText().toString().length()>0){
+                    char first = r_address.getText().toString().charAt(0);
+                    List<String> addresses = Arrays.asList(r_address.getText().toString().substring(1).split(";"));
+                    if(addresses.size() == 1){
+                        List<String> ads = new ArrayList<String>();
+                        if(first!=';'){
+                        ads.add(r_address.getText().toString());
+                            EmailModel.recipients = ads;
+                        }
+                        if(first == ';'){
+                            EmailModel.recipients = addresses;
+                        }
+                    }else{
+                        EmailModel.recipients = addresses;
+                    }
+                Log.d("dee",EmailModel.recipients.toString());
+                    CCFragment fragment = new CCFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.addToBackStack(AddressFragment.class.getName());
                 ft.add(R.id.frag_cont,fragment,"TAG");
                 ft.commit();}
+                else{
+                    Toast.makeText(getContext(), "Email address required", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

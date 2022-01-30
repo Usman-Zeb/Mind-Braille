@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mindbraille.email.EmailsAdapter;
 import com.example.mindbraille.email.MailDetails;
+import com.example.mindbraille.email.ReadMailActivity;
 import com.example.mindbraille.models.MailModel;
 import com.github.ybq.android.spinkit.SpinKitView;
 
@@ -38,7 +40,6 @@ public class NewsView extends AppCompatActivity implements NewsAdapter.OnNewsLis
     ArrayList<NewsModel> allNews;
     Button scrolldown;
     Button scrollup;
-    Button loadmore;
     private RecyclerView.Adapter mAdapter;
     LinearLayout ll;
     private LinearLayoutManager mLayoutManager;
@@ -52,7 +53,6 @@ public class NewsView extends AppCompatActivity implements NewsAdapter.OnNewsLis
         allNews = new ArrayList<NewsModel>();
         scrolldown = findViewById(R.id.scrolldown);
         scrollup = findViewById(R.id.scrollup);
-        loadmore = findViewById(R.id.loadmore);
         loading = findViewById(R.id.loading);
         ll = findViewById(R.id.linearLayout);
         mRecyclerView = findViewById(R.id.news_recycler);
@@ -67,14 +67,31 @@ public class NewsView extends AppCompatActivity implements NewsAdapter.OnNewsLis
 
         getNews();
 
+
+        scrolldown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mRecyclerView.smoothScrollToPosition(mLayoutManager.findLastVisibleItemPosition() + 1);
+            }
+        });
+
+        scrollup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mLayoutManager.findFirstVisibleItemPosition()>0){
+                    mRecyclerView.smoothScrollToPosition(mLayoutManager.findFirstVisibleItemPosition() - 1);}
+            }
+        });
+
+
     }
 
 
     @Override
     public void onContactClick(int position) {
         NewsModel emailHTML = allNews.get(position);
-        Intent intent = new Intent(getApplicationContext(), MailDetails.class);
-        intent.putExtra("obj",emailHTML);
+        Intent intent = new Intent(getApplicationContext(), NewsDetails.class);
+        intent.putExtra("obj",allNews.get(position));
         startActivity(intent);
     }
 

@@ -21,6 +21,8 @@
         android:background="@drawable/ic_contact"/>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_below="@+id/buttontocontactlistemail"
         android:id="@+id/recipientmailfield"
         android:layout_centerHorizontal="true"

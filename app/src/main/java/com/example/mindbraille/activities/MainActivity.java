@@ -56,6 +56,7 @@ import com.microsoft.graph.models.extensions.*;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.identity.client.*;
 import com.microsoft.identity.client.exception.*;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -219,6 +220,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (buttons[selector].getId())
                 {
                     case R.id.audioInput:
+
+                        intent = new Intent(MainActivity.this, NewsView.class);
+                        startActivity(intent);
+
+                        break;
+                    case R.id.tomailactivity:
+
                         try {
                             voiceInput();
                         } catch (ExecutionException e) {
@@ -226,35 +234,39 @@ public class MainActivity extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
                         break;
-                    case R.id.tomailactivity:
+                    case R.id.tocalendaractivity:
+
                         intent = new Intent(getApplicationContext(), SendMailActivity.class);
                         intent.putExtra("userauthInfo",userauthInfo);
                         startActivity(intent);
+
                         break;
-                    case R.id.tocalendaractivity:
+                    case R.id.smsbutton:
+
                         intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         intent.putExtra("userauthInfo",userauthInfo);
                         startActivity(intent);
-                        break;
-                    case R.id.smsbutton:
-                        intent = new Intent(getApplicationContext(), SMS.class);
-                        startActivity(intent);
+
                          break;
                      case R.id.callactivity:
-                         intent = new Intent(MainActivity.this, com.example.mindbraille.call.Call.class);
+                         intent = new Intent(getApplicationContext(), SMS.class);
                          startActivity(intent);
+
                          break;
                      case R.id.togameactivity:
-                          intent = new Intent(MainActivity.this, FlappyBird.class);
-                          startActivity(intent);
+                         intent = new Intent(MainActivity.this, com.example.mindbraille.call.Call.class);
+                         startActivity(intent);
+
                          break;
                      case R.id.tonewsactivity:
-                          intent = new Intent(MainActivity.this, NewsView.class);
-                          startActivity(intent);
+                         intent = new Intent(MainActivity.this, FlappyBird.class);
+                         startActivity(intent);
                          break;
 
                 }
+                ((GlobalClass) getApplication()).setBlinked(false);
             }
         }
     };
@@ -564,7 +576,14 @@ public class MainActivity extends AppCompatActivity {
                 new com.android.volley.Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Picasso.get().load("https://i.imgur.com/NMtRC7Y_d.webp?maxwidth=760&fidelity=grand").into(i);
+                        i.setVisibility(View.VISIBLE);
+                        constraintLayout.setVisibility(View.VISIBLE);
+                        i.setTranslationX(400);
+                        i.animate().translationX(0).setDuration(1000).setStartDelay(400);
+                        loading.setVisibility(View.GONE);
+                        constraintLayout.setTranslationY(700);
+                        constraintLayout.animate().translationY(0).setDuration(1000).setStartDelay(400);
                     }
 
                 }

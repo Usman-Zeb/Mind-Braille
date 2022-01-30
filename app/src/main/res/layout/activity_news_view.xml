@@ -47,7 +47,7 @@
             android:layout_height="match_parent">
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/scrolldown"
-                android:text="Up"
+                android:text="Down"
                 app:icon="@drawable/ic_scroll_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,18 +56,12 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/scrollup"
                 app:icon="@drawable/ic_scorll_up"
-                android:text="down"
+                android:text="Up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/loadmore"
-                app:icon="@drawable/ic_news"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Load More"
-                android:layout_margin="10dp"/>
+
         </LinearLayout>
 
     </LinearLayout>

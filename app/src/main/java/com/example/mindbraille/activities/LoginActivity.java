@@ -343,36 +343,7 @@ public class LoginActivity extends AppCompatActivity {
         //Sign in user
         signInButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-
-                builder.setTitle("Alert");
-                builder.setMessage("Do you want to continue without connecting EEG device?");
-
-                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        // Do nothing, but close the dialog
-                        mSingleAccountApp.signIn(LoginActivity.this, null, SCOPES, getAuthInteractiveCallback());
-                    }
-                });
-
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        // Do nothing
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-                if (mSingleAccountApp == null) {
-                    return;
-                }
-
+                mSingleAccountApp.signIn(LoginActivity.this, null, SCOPES, getAuthInteractiveCallback());
 
             }
         });
