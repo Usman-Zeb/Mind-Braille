@@ -28,4 +28,5 @@
     <color name="keyboard_bg_color">#34495e</color>
     <color name="keyboard_divider_color">#2c3e5e</color>
     <color name="keyboard_pressed_color">#95a5a6</color>
+    <color name="button_text_normal">#5E5E5E</color>
 </resources>

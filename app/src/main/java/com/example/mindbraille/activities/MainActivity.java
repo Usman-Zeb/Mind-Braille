@@ -67,6 +67,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -115,10 +117,24 @@ public class MainActivity extends AppCompatActivity {
     final Handler handler = new Handler();
     Thread thread;
     int selector =0;
+    Boolean isTesting = false;
+    Timer timer;
+    int countTry = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        /*
+        if(isTesting == true){
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(getApplicationContext(), SMS.class);
+                    startActivity(intent);
+                }
+            },15000);
+        }*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -205,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             Button[] buttons = {audioInput,emailButton, calendarButton, SMS_Button, callButton, gameButton,newsButton};
 
-            if(selector>6) selector=0;
+            if(selector>6) {selector=0; countTry++;}
 
             for(int i=0;i<buttons.length;i++)
             {
@@ -213,6 +229,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             buttons[selector].setEnabled(true);
+            if(isTesting == true && countTry > 0){
+                if(buttons[selector] == callButton){
+                    Intent intent = new Intent(MainActivity.this, com.example.mindbraille.call.Call.class);
+                    startActivity(intent);
+                }
+            }
             selector++;
             if(((GlobalClass) getApplication()).getBlinked() && (((GlobalClass) getApplication()).getBlinkValue()>50))
             {
@@ -251,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
 
                          break;
                      case R.id.callactivity:
+
                          intent = new Intent(getApplicationContext(), SMS.class);
                          startActivity(intent);
 

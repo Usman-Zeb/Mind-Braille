@@ -73,7 +73,9 @@ public class Call extends AppCompatActivity {
 
 
     Object[][] buttons;
-
+    Boolean isTesting = false;
+    String testString = "03092345729";
+    int countTry = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -246,6 +248,35 @@ public class Call extends AppCompatActivity {
             {
                 Button temp = (Button) buttons[row_selector][col_selector];
                 temp.setEnabled(true);
+                if(isTesting){
+                    if(countTry == 0){
+                        if(temp.getId() == R.id.buttonhash){
+                            textView.append("0");
+                            countTry++;
+                            rowwise=true;
+                            col_selector=0;
+                            col_running=false;
+                            row_selector++;
+                            running=true;
+                            thread.start();
+                            col_thread.interrupt();
+                        }
+                    }
+                    if(countTry == 1){
+                        if(temp.getId() == R.id.button1){
+                            textView.append("3");
+                            countTry++;
+                            rowwise=true;
+                            col_selector=0;
+                            col_running=false;
+                            row_selector++;
+                            running=true;
+                            thread.start();
+                            col_thread.interrupt();
+                        }
+                    }
+                }
+
             }
 
             if(((GlobalClass) getApplication()).getBlinked() && (((GlobalClass) getApplication()).getBlinkValue()>50) || rowwise==true)
@@ -337,7 +368,6 @@ public class Call extends AppCompatActivity {
                 }
                 ((GlobalClass) getApplication()).setBlinked(false);
                 rowwise=true;
-
                 col_selector=0;
 
                 row_selector++;
@@ -441,8 +471,54 @@ public class Call extends AppCompatActivity {
                         temp.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.mygreen));
 
                     }
-
                     temp.setEnabled(true);
+                }
+                if(isTesting){
+                    if(countTry == 0)
+                    {
+                        if(row_selector == 4){
+                            rowwise=false;
+                            col_selector=0;
+                            col_running=true;
+                            col_thread = new Thread(new Runnable() {
+                                public void run() {
+
+                                    while (col_running) {
+                                        try {
+                                            Thread.sleep((long) (1000));
+                                            col_handler.post(colRunner);
+                                        }
+                                        catch (InterruptedException e){
+                                            col_running=false;
+                                        }
+
+                                    }
+                                }
+                            });
+                            col_thread.start();
+                            thread.interrupt();
+                        }
+                    }
+                    if(countTry == 1)
+                    {
+                        if(row_selector == 1){
+                            rowwise=false;
+                            col_selector=0;
+                            col_running=true;
+                            col_thread.start();
+                            thread.interrupt();
+                        }
+                    }
+                    if(countTry == 2)
+                    {
+                        if(row_selector == 4){
+                            rowwise=false;
+                            col_selector=0;
+                            col_running=true;
+                            col_thread.start();
+                            thread.interrupt();
+                        }
+                    }
                 }
             }
 
