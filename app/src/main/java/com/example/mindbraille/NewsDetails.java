@@ -22,6 +22,7 @@ public class NewsDetails extends AppCompatActivity {
     TextView datetime;
     NewsModel news;
     AuthInfo userauthInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

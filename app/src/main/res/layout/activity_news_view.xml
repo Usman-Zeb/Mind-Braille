@@ -33,6 +33,7 @@
         >
         <androidx.recyclerview.widget.RecyclerView
             android:visibility="visible"
+
             android:id="@+id/news_recycler"
             android:layout_width="match_parent"
             android:layout_height="540dp"
@@ -42,22 +43,56 @@
         <LinearLayout
             android:layout_gravity="center"
             android:gravity="center"
+
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/scrolldown"
-                android:text="Down"
-                app:icon="@drawable/ic_scroll_down"
-                android:layout_width="wrap_content"
+                android:enabled="false"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:text="Down"
+                app:icon="@drawable/ic_scroll_down" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/scrollup"
                 app:icon="@drawable/ic_scorll_up"
                 android:text="Up"
-                android:layout_width="wrap_content"
+                android:enabled="false"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/select_news_btn"
+                android:enabled="false"
+                android:text="Select"
+
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/back_news_btn"
+                android:enabled="false"
+                android:text="Back"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"/>
 
