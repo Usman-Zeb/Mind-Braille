@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:text="Weather Update"
+            android:textFontWeight="600"
+            >
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/mygrey"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+
+            />
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:text="Temperature: 56°C"
+            android:textFontWeight="600"
+            >
+        </TextView>
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:text="Humidity: 69%"
+            android:textFontWeight="600"
+            >
+        </TextView>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

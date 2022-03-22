@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
@@ -57,6 +58,8 @@ import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.identity.client.*;
 import com.microsoft.identity.client.exception.*;
 import com.squareup.picasso.Picasso;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ViewListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
     private AuthInfo userauthInfo;
 
     /* UI & Debugging Variables */
+    CarouselView carouselView;
+    CardView dashboard;
     CircleImageView i;
     Button audioInput;
     Button signOutButton;
@@ -162,7 +167,10 @@ public class MainActivity extends AppCompatActivity {
         userid = getIntent().getStringExtra("userid");
         userName = findViewById(R.id.displayName);
         progressBar = findViewById(R.id.spin_kit);
-
+        dashboard = findViewById(R.id.dashboard);
+        carouselView = findViewById(R.id.carouselView);
+        carouselView.setPageCount(2);
+        carouselView.setViewListener(viewListener);
         userauthInfo = new AuthInfo();
 
         initializeUI();
@@ -588,9 +596,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Bitmap bitmap) {
                         i.setImageBitmap(bitmap);
                         i.setVisibility(View.VISIBLE);
+                        dashboard.setVisibility(View.VISIBLE);
                         constraintLayout.setVisibility(View.VISIBLE);
                         i.setTranslationX(400);
+                        dashboard.setTranslationX(400);
                         i.animate().translationX(0).setDuration(1000).setStartDelay(400);
+                        dashboard.animate().translationX(0).setDuration(1000).setStartDelay(400);
                         loading.setVisibility(View.GONE);
                         constraintLayout.setTranslationY(700);
                         constraintLayout.animate().translationY(0).setDuration(1000).setStartDelay(400);
@@ -727,7 +738,22 @@ public class MainActivity extends AppCompatActivity {
     {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.READ_CONTACTS,Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_PHONE_NUMBERS,Manifest.permission.READ_SMS,Manifest.permission.SEND_SMS,Manifest.permission.CALL_PHONE,Manifest.permission.READ_CONTACTS},1);
     }
+    ViewListener viewListener = new ViewListener() {
 
+        @Override
+        public View setViewForPosition(int position) {
+            if (position == 0){
+                View customView = getLayoutInflater().inflate(R.layout.dashboard_card_weather, null);
+                return customView;
+            }
+            if (position == 1){
+                View customView = getLayoutInflater().inflate(R.layout.dashboard_card_messages, null);
+                return customView;
+            }
+            //set view attributes here
+            return null;
+        }
+    };
 
 }
 

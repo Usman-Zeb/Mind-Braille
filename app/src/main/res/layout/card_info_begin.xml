@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="183dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="48.1dp"
+            android:layout_height="48.1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center|start"
+            android:background="@drawable/round_button"
+            app:icon="@drawable/ic_baseline_info_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="48dp"
+            android:layout_marginBottom="20dp"
+            ></com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:paddingTop="0dp"
+            android:id="@+id/introText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="Please connect the selected device and proceed with Microsoft sign in afterwards"
+            >
+
+        </TextView>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
