@@ -26,7 +26,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/foreground_gradient"
+        android:background="@color/white"
         android:elevation="100dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -38,17 +38,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.986">
 
-        <Button
-            android:id="@+id/audioInput"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@drawable/ic_audio"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
+
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/spin_kit"
@@ -66,17 +56,32 @@
             app:layout_constraintVertical_bias="0.992" />
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/audioInput"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:enabled="true"
+            android:gravity="center"
+            app:icon="@drawable/ic_audio"
+            app:iconGravity="top"
+            app:iconSize="46dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/tomailactivity"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_weight="5"
-            android:background="@drawable/cols"
-            android:drawableTop="@drawable/ic_email"
-            android:drawablePadding="-5dp"
             android:enabled="true"
             android:gravity="center"
-            android:text="Email"
+            android:text="Emails"
+            app:icon="@drawable/ic_email"
+            app:iconGravity="top"
+            app:iconSize="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.194"
@@ -84,13 +89,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.203" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/togameactivity"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_weight="5"
-            android:drawableTop="@drawable/ic_game"
-            android:drawablePadding="-5dp"
+            app:iconGravity="top"
+            app:iconSize="64dp"
+            app:icon="@drawable/ic_game"
             android:enabled="true"
             android:gravity="center"
             android:text="Games"
@@ -101,13 +106,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.781" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/tonewsactivity"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_weight="5"
-            android:drawableTop="@drawable/ic_news"
-            android:drawablePadding="-5dp"
+            app:icon="@drawable/ic_news"
+            app:iconGravity="top"
+            app:iconSize="64dp"
             android:enabled="true"
             android:gravity="center"
             android:text="News"
@@ -118,16 +123,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.781" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/callactivity"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_weight="5"
+            app:iconGravity="top"
+            app:iconSize="64dp"
+            app:icon="@drawable/ic_baseline_call_24"
             android:enabled="true"
             android:gravity="center"
             android:text="Call"
-            android:drawablePadding="-5dp"
-            android:drawableTop="@drawable/ic_baseline_call_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.83"
@@ -135,13 +140,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.501" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/smsbutton"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_weight="5"
-            android:drawableTop="@drawable/ic_sms"
-            android:drawablePadding="-5dp"
+            app:iconSize="64dp"
+            app:icon="@drawable/ic_sms"
+            app:iconGravity="top"
             android:enabled="true"
             android:gravity="center"
             android:text="SMS"
@@ -152,17 +157,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.499" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/tocalendaractivity"
-
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_weight="5"
+            app:iconGravity="top"
+            app:iconSize="64dp"
             android:enabled="true"
             android:gravity="center"
             android:text="Outlook Events"
-            android:drawablePadding="-5dp"
-            android:drawableTop="@drawable/ic_calendar"
+            app:icon="@drawable/ic_calendar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.828"
@@ -170,37 +174,80 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.202" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/clearCache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:enabled="false"
+            android:backgroundTint="@color/colorDawlance"
+            android:enabled="true"
             android:gravity="center"
-            android:text="Sign Out"
+            android:text="Logout"
+            app:icon="@drawable/ic_signout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.986" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dashboard"
+        android:layout_width="282dp"
+        android:layout_height="128dp"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carouselView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:fillColor="#FFFFFFFF"
+                app:indicatorVisibility="gone"
+                app:pageColor="#00000000"
+                app:pageTransformInterval="500"
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:strokeColor="#FF777777"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="1dp"
+        app:civ_border_color="#8C8C8C"
+        app:civ_border_width="2.5dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <TextView
         android:id="@+id/displayName"

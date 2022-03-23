@@ -12,10 +12,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mindbraille.R;
@@ -39,6 +41,7 @@ import com.microsoft.graph.concurrency.ICallback;
 import com.microsoft.graph.core.ClientException;
 import com.microsoft.graph.http.IHttpRequest;
 import com.microsoft.graph.models.extensions.Drive;
+import com.microsoft.graph.models.extensions.Image;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.graph.models.extensions.IGraphServiceClient;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
@@ -52,6 +55,10 @@ import com.microsoft.identity.client.SilentAuthenticationCallback;
 import com.microsoft.identity.client.exception.MsalException;
 import com.neurosky.thinkgear.TGDevice;
 import com.example.mindbraille.questionDialog;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
+import com.synnapps.carouselview.ViewListener;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -66,10 +73,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
 
 
+    ImageView device_image;
+    View divider;
+    TextView indicatorText;
     AuthInfo userauthInfo;
     String accessToken;
     Button connectMindwave;
+    boolean isTesting = true;
+    boolean isFinding = false;
 
+    String[] welcome_messages = {"Welcome to Mind Braille","Make calls","Send messages","Play games"};
+    int[] sampleImages = {R.drawable.mindwave_logo,R.drawable.nexstem_logo,R.drawable.emotiv_logo};
 
     TextView tvState;
     TextView tvAttention;
@@ -94,8 +108,10 @@ public class LoginActivity extends AppCompatActivity {
     int time;
     Button button;
     Button button2;
-
-
+    CarouselView carouselView_intro;
+    CarouselView carouselView;
+    CarouselView deviceSelector;
+    CarouselView endView;
     boolean isLogingFirstTime = true;
     boolean isAccountExists = false;
     NeuroSky neuroSky;
@@ -108,6 +124,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
     String accountID;
     Button signInButton;
+    Button left_select;
+    Button right_select;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,20 +133,80 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        indicatorText = findViewById(R.id.indicatorText);
+        divider = findViewById(R.id.divider);
+        deviceSelector = (CarouselView) findViewById(R.id.deviceSelection);
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView_intro = (CarouselView) findViewById(R.id.carouselView_intro);
+        endView = (CarouselView) findViewById(R.id.carouselView_end);
+        left_select = findViewById(R.id.left_select);
+        right_select = findViewById(R.id.right_select);
+        carouselView.setPageCount(4);
+        carouselView_intro.setPageCount(1);
+        deviceSelector.setPageCount(3);
+        endView.setPageCount(1);
+        endView.setViewListener(viewListener_end);
+        deviceSelector.setViewListener(viewListener_selection);
+        carouselView.setViewListener(viewListener);
+        carouselView_intro.setViewListener(viewListener_prev);
 
-
+        device_image = findViewById(R.id.img_device);
         initializeUI();
         connectMindwave = findViewById(R.id.connectmindwave);
 
-        connectMindwave.setOnClickListener(new View.OnClickListener() {
+
+        right_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                neuro();
+                deviceSelector.setCurrentItem((deviceSelector.getCurrentItem()+1)%3,true);
+            }
+        });
+
+        left_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deviceSelector.setCurrentItem((deviceSelector.getCurrentItem()-1)%3,true);
             }
         });
 
 
-        tvState = findViewById(R.id.tv_state);
+        connectMindwave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isTesting){
+                        loading.setVisibility(View.VISIBLE);
+                        indicatorText.setVisibility(View.VISIBLE);
+                        divider.setVisibility(View.VISIBLE);
+                        carouselView_intro.setVisibility(View.GONE);
+                        carouselView.setVisibility(View.VISIBLE);
+                        isFinding = true;
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loading.setVisibility(View.GONE);
+                                    device_image.setVisibility(View.VISIBLE);
+                                    device_image.setTranslationX(-1000);
+                                    device_image.animate().translationX(0).setDuration(1000).setStartDelay(100);
+                                    carouselView.setVisibility(View.GONE);
+                                    endView.setVisibility(View.VISIBLE);
+                                    indicatorText.setText("Mindwave Found");
+                                }
+                            });
+                        }
+                    },5000);
+
+
+                }else{
+                neuro();}
+            }
+        });
+
+
+        //tvState = findViewById(R.id.tv_state);
 
         // lineChart = findViewById(R.id.linechart);
         //description.setText("EEG Bands");
@@ -179,18 +257,6 @@ public class LoginActivity extends AppCompatActivity {
         ((GlobalClass) this.getApplication()).setInNewSMS(false);
 
 
-
-
-
-
-
-       /* thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                neuro();
-            }
-        });*/
-
         loading = findViewById(R.id.spin_kit);
 
 
@@ -201,7 +267,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onCreated(ISingleAccountPublicClientApplication application) {
                         mSingleAccountApp = application;
-                        loadAccount();
+                        //loadAccount();
                     }
                     @Override
                     public void onError(MsalException exception) {
@@ -210,6 +276,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
     }
+
 
     private void changeActivity() throws IOException {
 
@@ -221,6 +288,8 @@ public class LoginActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+
 
     void getAccountInfo() throws IOException {
         Retrofit retrofit = new Retrofit.Builder()
@@ -532,5 +601,52 @@ public class LoginActivity extends AppCompatActivity {
         questionDialog dialog = new questionDialog(getApplicationContext());
         dialog.show();
     }
+    ViewListener viewListener = new ViewListener() {
+
+        @Override
+        public View setViewForPosition(int position) {
+            TextView introText;
+            View customView = getLayoutInflater().inflate(R.layout.intro_card, null);
+            introText = customView.findViewById(R.id.introText);
+            introText.setText(welcome_messages[position]);
+            //set view attributes here
+
+            return customView;
+        }
+    };
+
+    ViewListener viewListener_prev = new ViewListener() {
+
+        @Override
+        public View setViewForPosition(int position) {
+
+                View customView = getLayoutInflater().inflate(R.layout.card_info_begin, null);
+                return customView;
+        }
+    };
+
+    ViewListener viewListener_end = new ViewListener() {
+
+        @Override
+        public View setViewForPosition(int position) {
+
+            View customView = getLayoutInflater().inflate(R.layout.card_info_found, null);
+            return customView;
+        }
+    };
+
+    ViewListener viewListener_selection = new ViewListener() {
+
+        @Override
+        public View setViewForPosition(int position) {
+            ImageView img;
+            View customView = getLayoutInflater().inflate(R.layout.device_selector_card, null);
+            img = customView.findViewById(R.id.device_pic);
+            img.setImageResource(sampleImages[position]);
+            //set view attributes here
+
+            return customView;
+        }
+    };
 
 }

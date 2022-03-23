@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="bottom"
+        >
+
+        <ImageView
+            android:paddingTop="7dp"
+            android:id="@+id/device_pic"
+            android:layout_width="128dp"
+            android:layout_height="64dp"
+            >
+
+        </ImageView>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
