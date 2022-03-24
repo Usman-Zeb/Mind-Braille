@@ -3,6 +3,9 @@ package com.example.mindbraille.email;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.example.mindbraille.R;
 import com.example.mindbraille.models.AuthInfo;
@@ -27,6 +30,8 @@ public class SendMailActivity extends AppCompatActivity {
         bundle.putSerializable("userauthInfo",userauthInfo);
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_cont,fragment).commit();
+
+
 
     }
 }

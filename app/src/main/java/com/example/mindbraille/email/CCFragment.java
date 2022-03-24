@@ -39,6 +39,7 @@ public class CCFragment extends Fragment {
     Button buttontocontacts;
     ArrayList<ContactModel> contactModelArrayList;
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -63,6 +64,7 @@ public class CCFragment extends Fragment {
         r_address.setHint("CC");
         buttontoemailbody = v.findViewById(R.id.buttontoemailbody);
         buttontocontacts = v.findViewById(R.id.buttontocontactlistemail);
+
 
         buttontocontacts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +119,7 @@ public class CCFragment extends Fragment {
                     ft.addToBackStack(AddressFragment.class.getName());
                     ft.add(R.id.frag_cont, fragment, "TAG");
                     ft.commit();
+                    //smsrl.removeView(kb);
 
             }
         });
@@ -150,15 +153,19 @@ public class CCFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        RelativeLayout smsrl = requireActivity().findViewById(R.id.address_frament_relative_layout);
         LayoutInflater layoutInflater = getLayoutInflater();
         View kb = layoutInflater.inflate(R.layout.mindbraillekb,null);
-
-
-        RelativeLayout smsrl = Objects.requireNonNull(getActivity()).findViewById(R.id.address_frament_relative_layout);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         //params.addRule(RelativeLayout.BELOW, R.id.new_sms_final_back_btn);
         kb.setLayoutParams(params);
         smsrl.addView(kb);
+
+
+
+
+
     }
 }

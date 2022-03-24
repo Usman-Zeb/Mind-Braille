@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_email_recent_or_date.xml" value="0.286231884057971" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_login.xml" value="0.286231884057971" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_mail_mode.xml" value="0.286231884057971" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_main.xml" value="0.286231884057971" />
         <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_news_view.xml" value="0.22" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_read_mail.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_s_m_s.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/activity_send_mail.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/address_fragment.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/emailbody_fragment.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/fragment_form1.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/fragment_outlook_contacts.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/mail_card.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/usman/Desktop/Mind-Braille/app/src/main/res/layout/news_card.xml" value="0.2368659420289855" />
       </map>
     </option>
