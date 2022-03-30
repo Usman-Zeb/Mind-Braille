@@ -293,7 +293,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void getAccountInfo() throws IOException {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://mindbraillebackend.azurewebsites.net/")
+                .baseUrl("https://mindbrailleapp.azurewebsites.net/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -309,7 +309,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void checkIfExists() throws IOException {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://mindbraillebackend.azurewebsites.net/")
+                .baseUrl("https://mindbrailleapp.azurewebsites.net/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -337,7 +337,7 @@ public class LoginActivity extends AppCompatActivity {
                 "Null","Null");
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://mindbraillebackend.azurewebsites.net/")
+                .baseUrl("https://mindbrailleapp.azurewebsites.net/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

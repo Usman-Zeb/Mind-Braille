@@ -204,7 +204,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 addressInput.getText().toString(),canTalk,isColorBlind,"6","0");
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://mindbraillebackend.azurewebsites.net/")
+                .baseUrl("https://mindbrailleapp.azurewebsites.net/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

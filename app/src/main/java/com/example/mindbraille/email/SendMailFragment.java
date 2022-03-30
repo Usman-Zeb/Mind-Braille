@@ -180,7 +180,7 @@ public class SendMailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        speechConfig = SpeechConfig.fromSubscription("8ab85a84b639444683382bb842ebe5a1", "eastus");
+        speechConfig = SpeechConfig.fromSubscription("a72658606e1a4b449d18d1ea99be2ef9", "eastus");
 
         View v = inflater.inflate(R.layout.emailbody_fragment,container,false);
         isReply = false;

@@ -490,7 +490,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl("https://mindbraillebackend.azurewebsites.net/")
+                                .baseUrl("https://mindbrailleapp.azurewebsites.net/")
                                 .addConverterFactory(GsonConverterFactory.create())
                                 .build();
 
@@ -671,7 +671,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected IntentRecognitionResult doInBackground(IntentRecognitionResult... intents) {
-            final SpeechConfig intentConfig = SpeechConfig.fromSubscription("e8cd34b635de481baeb612af968ac23d", "westus");
+            final SpeechConfig intentConfig = SpeechConfig.fromSubscription("a4e1e08ceb7f499ab41856845581319b", "australiaeast");
             final AudioConfig audioInput = AudioConfig.fromDefaultMicrophoneInput();
             final IntentRecognizer reco = new IntentRecognizer(intentConfig, audioInput);
             runOnUiThread(new Runnable() {
@@ -681,7 +681,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            LanguageUnderstandingModel intentModel = LanguageUnderstandingModel.fromAppId("7f8343ef-fe2c-4c83-9718-32c7181ca012");
+            LanguageUnderstandingModel intentModel = LanguageUnderstandingModel.fromAppId("12470bf0-8eb7-4923-86fe-bf5067043eba");
             reco.addAllIntents(intentModel);
 
             final Future<IntentRecognitionResult> task = reco.recognizeOnceAsync();
